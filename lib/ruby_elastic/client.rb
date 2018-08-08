@@ -28,14 +28,16 @@ module RubyElastic
 
     private
       def api_call(path, args = {}, verb = 'get', options = {})
-        promise.then do |path|
-          HTTPProxy.make_request(path, args, verb, options)
+        @options.promise_pool << Concurrent::Promise.new do |options|
+          p '...'
+          p options.inspect
+          HTTPProxy.make_request('http://localhost:3202/server4/1', args, verb, options)
         end
-      end
 
-      def promise
-        Concurrent::Promise.execute do
-          RubyElastic::Resolver.resolve(self)
+        @discovery_resolver.resolve.then do |ret|
+          @options.promise_pool.each do |promise|
+            promise.execute#({test: 1111})
+          end
         end
       end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RubyElastic
   class Error < StandardError
     def initialize(status, body)

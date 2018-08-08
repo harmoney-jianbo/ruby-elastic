@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+
+# ruby '2.3.3'
+
+gem 'ruby-eureka', git: 'git@github.com:harmoney-jianbo/ruby-eureka.git'
+gem 'rack'
+gem 'puma'

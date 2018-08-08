@@ -1,0 +1,33 @@
+GIT
+  remote: git@github.com:harmoney-jianbo/ruby-eureka.git
+  revision: e5fa98ff963e52fb995af171868e04581fb45bca
+  specs:
+    ruby-eureka (0.0.3)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    byebug (10.0.2)
+    coderay (1.1.2)
+    method_source (0.9.0)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-byebug (3.6.0)
+      byebug (~> 10.0)
+      pry (~> 0.10)
+    puma (3.12.0)
+    rack (2.0.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  pry
+  pry-byebug
+  puma
+  rack
+  ruby-eureka!
+
+BUNDLED WITH
+   1.16.2

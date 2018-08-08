@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 
 require './rack_example/discovery'
-require 'eureka'
 
+args = Hash[ ARGV.flat_map{|s| s.scan(/--?([^=\s]+)(?:=(\S+))?/) } ]
 use Rack::Reloader, 0
-run Greeter.new
+run Discovery.new(args)

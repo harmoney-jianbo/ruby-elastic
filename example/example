@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+port = 3202
+
+exec "puma rack_example/config.ru --port=#{port}"

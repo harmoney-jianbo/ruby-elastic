@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+require 'forwardable'
+
 module RubyElastic
   class Servers
     extend Forwardable
     include Enumerable
 
-    def_delegator :@servers, :shuffle
+    def_delegators :@servers, :shuffle, :empty?
 
     alias size count
 

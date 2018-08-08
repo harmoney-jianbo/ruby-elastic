@@ -6,21 +6,24 @@
 require 'moneta'
 
 module RubyElastic
-  module Options
-    def self.setup(options)
+  class Options
+    attr_accessor :discovery_processing, :promise_pool
+
+    def initialize(options)
+      @options = options
+      @promise_pool = []
     end
 
-    def self.base_path
+    def base_path
       @base_path
     end
 
-    def self.base_path=(base_path)
+    def base_path=(base_path)
       @base_path = base_path
     end
 
-    # Default way to set up Euraka
-    def self.config
-      yield self
+    def discovery_processing?
+      !!discovery_processing
     end
 
     # Store some entries
@@ -31,7 +34,7 @@ module RubyElastic
     # store['key'] # returns 'value'
 
     # store.close
-    def self.store
+    def store
       @store ||= Moneta.new(:File, dir: 'ruby-elastic')
     end
   end

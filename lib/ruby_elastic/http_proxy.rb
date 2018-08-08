@@ -17,16 +17,15 @@ module RubyElastic
       end
 
       def self.connection(req)
-        binding.pry
         con = ::Faraday.new('http://test', req.options)
-        # con.headers['Accept'] = 'application/json'
+        con.headers['Accept'] = 'application/json'
         # con.headers['Authorization'] = 'Bearer ' + req.access_token
         con
       end
 
       def self.build_response!(response)
-        ErrorChecker.new(response.status, response.body).raise_error_if_any
-        Response.new(response.status, response.body)
+        RubyElastic::ErrorChecker.new(response.status, response.body).raise_error_if_any
+        RubyElastic::Response.new(response.status, response.body)
       end
     end
 
